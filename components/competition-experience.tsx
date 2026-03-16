@@ -99,7 +99,7 @@ function UsernameGate({
       <div className="entry-gate__card">
         <div className="entry-gate__echo">Welcome to the Madness</div>
         <p className="panel__eyebrow">{competition.settings.label} Pool Access</p>
-        <h1>Paid entrants only beyond this point</h1>
+        <h1>Enter the pool portal</h1>
         <p>
           In order to gain access to this page, please sign up for the pool and
           Venmo <strong>{competition.settings.venmoHandle}</strong> for access.
