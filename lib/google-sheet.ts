@@ -30,6 +30,24 @@ function toCsvUrl(sheetUrl: string) {
   return `https://docs.google.com/spreadsheets/d/${match[1]}/export?format=csv&gid=${gid}`;
 }
 
+function normalizeBracketUrl(value: string) {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return "";
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  if (/^[a-z0-9.-]+\.[a-z]{2,}(?:\/|$)/i.test(trimmed)) {
+    return `https://${trimmed}`;
+  }
+
+  return "";
+}
+
 function isPaid(value: string) {
   return ["yes", "y", "true", "paid", "1"].includes(value.trim().toLowerCase());
 }
@@ -94,7 +112,7 @@ export async function getLeaderboardFromSheet(
         points: Number.parseFloat(row[1] ?? ""),
         potentialPoints: Number.parseFloat(row[2] ?? ""),
         paid: isPaid(row[3] ?? ""),
-        bracketUrl: row[4]?.trim() ?? "",
+        bracketUrl: normalizeBracketUrl(row[4] ?? ""),
         teamCode: toTeamCode(row[5] ?? "")
       }))
       .filter((entry) => entry.nickname)
