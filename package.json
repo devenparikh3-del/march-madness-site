@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "./.tooling/node/bin/node ./node_modules/next/dist/bin/next dev",
-    "build": "./.tooling/node/bin/node ./node_modules/next/dist/bin/next build",
-    "start": "./.tooling/node/bin/node ./node_modules/next/dist/bin/next start",
-    "typecheck": "./.tooling/node/bin/node ./node_modules/typescript/bin/tsc --noEmit --incremental false"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit --incremental false"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
